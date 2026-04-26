@@ -1,0 +1,51 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>SUSHI-Theme</id>
+    <version>1.0.0</version>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>SUSHI-Theme</name>
+    <category>UI</category>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor url="https://github.com/tomopumipumi">Ichimura Tomoo</vendor>
+
+    <idea-version since-build="233" until-build="261.*"/>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <description><![CDATA[
+        <h2>A delicious, dark theme</h2>
+        <p>Inspired by Nori, Shari, Wasabi, and fresh ingredients.</p>
+        <span>⚠Warning: May cause sudden cravings for sushi during late-night coding sessions.</span>
+        ]]></description>
+
+    <!-- Short summary of new features and bugfixes in the latest plugin version.
+         Displayed on the Plugin Page and IDE Plugin Manager. Simple HTML elements can be included between <![CDATA[  ]]> tags. -->
+    <change-notes><![CDATA[
+        <ul>
+            <li>Initial release of SUSHI-Theme</li>
+        </ul>
+    ]]></change-notes>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <themeProvider
+                id="5f40e3ce-d0ea-4e91-9486-802da665a558"
+                path="/theme/SUSHITheme.theme.json"/>
+        <statusBarWidgetFactory implementation="com.tomopumipumi.sushi.statusbar.SushiWidgetFactory"
+                                id="SushiPlateWidget"/>
+        <postStartupActivity implementation="com.tomopumipumi.sushi.SushiStartupActivity"/>
+        <applicationService serviceImplementation="com.tomopumipumi.sushi.SushiSettings"/>
+        <applicationConfigurable
+                parentId="appearance"
+                instance="com.tomopumipumi.sushi.SushiConfigurable"
+                id="com.tomopumipumi.sushi.SushiConfigurable"
+                displayName="SUSHI-Theme"/>
+    </extensions>
+</idea-plugin>

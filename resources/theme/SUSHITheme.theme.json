@@ -1,0 +1,76 @@
+{
+  "name": "SUSHI",
+  "dark": true,
+  "author": "Ichimura Tomoo",
+  "editorScheme": "/theme/SUSHI-Theme.xml",
+  "colors": {
+    "sushiBackground": "#000B00",
+    "sushiPanel": "#485859",
+    "sushiTabActive": "#302833",
+    "sushiForeground": "#E8D3C7",
+    "sushiBorder": "#302833",
+    "sushiAccent": "#66CDAA",
+    "sushiButton": "#DCCB18"
+  },
+  "ui": {
+    "*": {
+      "background": "sushiBackground",
+      "foreground": "sushiForeground",
+      "selectionBackground": "sushiAccent",
+      "selectionForeground": "#162018",
+      "focusColor": "sushiAccent",
+      "separatorColor": "sushiBorder",
+      "borderColor": "sushiBorder"
+    },
+    "Panel": {
+      "background": "sushiPanel"
+    },
+    "ToolWindow": {
+      "background": "sushiPanel",
+      "Header.background": "sushiPanel"
+    },
+    "StatusBar": {
+      "background": "sushiPanel",
+      "borderColor": "sushiPanel"
+    },
+    "EditorTabs": {
+      "background": "sushiPanel",
+      "underlinedTabBackground": "sushiBackground",
+      "hoverBackground": "sushiTabActive",
+      "inactiveUnderlineColor": "sushiBorder",
+      "underlineColor": "sushiAccent"
+    },
+    "Button": {
+      "background": "sushiButton",
+      "foreground": "#162018",
+      "startBorderColor": "sushiButton",
+      "endBorderColor": "sushiButton"
+    },
+    "Tree": {
+      "background": "sushiPanel",
+      "foreground": "sushiForeground",
+      "selectionBackground": "sushiAccent",
+      "selectionForeground": "#162018"
+    },
+    "List": {
+      "background": "sushiPanel",
+      "foreground": "sushiForeground"
+    },
+    "Menu": {
+      "background": "sushiPanel",
+      "foreground": "sushiForeground",
+      "separatorColor": "sushiBorder"
+    },
+    "MenuItem": {
+      "selectionBackground": "sushiAccent",
+      "selectionForeground": "#162018"
+    },
+    "ScrollBar": {
+      "thumbColor": "sushiButton",
+      "thumbBorderColor": "sushiButton",
+      "hoverThumbColor": "#FCEB55",
+      "hoverThumbBorderColor": "#FCEB55",
+      "background": "sushiPanel"
+    }
+  }
+}

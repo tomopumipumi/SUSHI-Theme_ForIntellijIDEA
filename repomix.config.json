@@ -1,0 +1,56 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "input": {
+    "maxFileSize": 50000000
+  },
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "parsableStyle": false,
+    "compress": false,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "files": true,
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "topFilesLength": 5,
+    "showLineNumbers": false,
+    "includeEmptyDirectories": true,
+    "truncateBase64": true,
+    "tokenCountTree": 50000,
+    "git": {
+      "sortByChanges": true,
+      "sortByChangesMaxCommits": 100,
+      "includeDiffs": true,
+      "includeLogs": true,
+      "includeLogsCount": 50
+    }
+  },
+  "include": [],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      ".gradle",
+      ".idea",
+      ".intellijPlatform",
+      "build",
+      "gradle",
+      "resources/.gradle",
+      "resources/build",
+      "resources/gradle/wrapper",
+      "resources/gradlew",
+      "resources/gradlew.bat",
+      "gradlew",
+      "gradlew.bat",
+      "repomix.config",
+      "Nigiri.kt"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  },
+  "tokenCount": {
+    "encoding": "o200k_base"
+  }
+}

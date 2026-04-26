@@ -1,0 +1,23 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+gen/
+
+# Gradle
+.gradle/
+build/
+
+# IntelliJ Platform Plugin
+.intellijPlatform/
+
+# Repomix (packed context files)
+repomix-output.xml
+
+# Output and temporary files
+*.jar
+*.class
+*.log
+
+# Project specific (If Nigiri.kt is for testing/temporary use)
+Nigiri.kt
