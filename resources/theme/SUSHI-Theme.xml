@@ -2,15 +2,19 @@
   <option name="FONT_SCALE" value="1.0" />
   <metaInfo>
     <property name="ide">idea</property>
-    <property name="ideVersion">2026.1.0.0</property>
+    <property name="ideVersion">2026.1.1.0.0</property>
   </metaInfo>
   <option name="CONSOLE_FONT_NAME" value="BIZ UDGothic" />
   <option name="CONSOLE_LINE_SPACING" value="1.2" />
   <colors>
+    <option name="ANNOTATIONS_COLOR" value="" />
     <option name="BLOCK_TERMINAL_ERROR_BLOCK_STROKE_COLOR" value="EE0619" />
+    <option name="INDENT_GUIDE" value="056F76" />
     <option name="SELECTED_INDENT_GUIDE" value="55C6A5" />
     <option name="SELECTION_BACKGROUND" value="66CDAA" />
     <option name="SELECTION_FOREGROUND" value="162018" />
+    <option name="VCS_ANNOTATIONS_COLOR_1" value="" />
+    <option name="VCS_ANNOTATIONS_COLOR_5" value="1D0342" />
   </colors>
   <attributes>
     <option name="CONSOLE_BLACK_OUTPUT">
@@ -92,7 +96,7 @@
     </option>
     <option name="DEFAULT_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="e5cb8a" />
+        <option name="FOREGROUND" value="96ddf6" />
       </value>
     </option>
     <option name="DEFAULT_KEYWORD">
@@ -135,6 +139,51 @@
         <option name="FOREGROUND" value="878e98" />
       </value>
     </option>
+    <option name="DEPRECATED_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="808080" />
+        <option name="EFFECT_COLOR" value="46970" />
+        <option name="EFFECT_TYPE" value="3" />
+      </value>
+    </option>
+    <option name="DIFF_DELETED">
+      <value>
+        <option name="FOREGROUND" value="808080" />
+        <option name="BACKGROUND" value="116105" />
+      </value>
+    </option>
+    <option name="DIFF_INSERTED">
+      <value>
+        <option name="FOREGROUND" value="b3a27e" />
+        <option name="BACKGROUND" value="9e0551" />
+      </value>
+    </option>
+    <option name="DIFF_MODIFIED">
+      <value>
+        <option name="FOREGROUND" value="2c3233" />
+        <option name="BACKGROUND" value="13535c" />
+        <option name="ERROR_STRIPE_COLOR" value="d70a47" />
+      </value>
+    </option>
+    <option name="ERRORS_ATTRIBUTES">
+      <value>
+        <option name="EFFECT_COLOR" value="ec0924" />
+        <option name="EFFECT_TYPE" value="2" />
+      </value>
+    </option>
+    <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
+      <value>
+        <option name="BACKGROUND" value="2b4032" />
+        <option name="ERROR_STRIPE_COLOR" value="55c6a5" />
+      </value>
+    </option>
+    <option name="INFO_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="808080" />
+        <option name="EFFECT_COLOR" value="6b3c0" />
+        <option name="EFFECT_TYPE" value="5" />
+      </value>
+    </option>
     <option name="INLAY_DEFAULT">
       <value>
         <option name="FOREGROUND" value="788ca6" />
@@ -151,28 +200,44 @@
         <option name="FOREGROUND" value="c4e014" />
       </value>
     </option>
+    <option name="MATCHED_BRACE_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="6a65ec" />
+      </value>
+    </option>
     <option name="TEXT">
       <value>
         <option name="FOREGROUND" value="808080" />
         <option name="BACKGROUND" value="1a1919" />
       </value>
     </option>
-
-
-    <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
-      <value>
-        <option name="BACKGROUND" value="2B4032" /> <option name="ERROR_STRIPE_COLOR" value="55C6A5" /> </value>
-    </option>
-
-    <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
-      <value>
-        <option name="BACKGROUND" value="402B32" /> <option name="ERROR_STRIPE_COLOR" value="EE0619" />
-      </value>
-    </option>
-
     <option name="TEXT_SEARCH_RESULT_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="3B4C59" /> </value>
+        <option name="BACKGROUND" value="3b4c59" />
+      </value>
+    </option>
+    <option name="TODO_DEFAULT_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="6a65ec" />
+      </value>
+    </option>
+    <option name="WARNING_ATTRIBUTES">
+      <value>
+        <option name="EFFECT_COLOR" value="c7ce0b" />
+        <option name="EFFECT_TYPE" value="2" />
+      </value>
+    </option>
+    <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
+      <value>
+        <option name="BACKGROUND" value="402b32" />
+        <option name="ERROR_STRIPE_COLOR" value="ee0619" />
+      </value>
+    </option>
+    <option name="WRONG_REFERENCES_ATTRIBUTES">
+      <value>
+        <option name="EFFECT_COLOR" value="c8de08" />
+        <option name="EFFECT_TYPE" value="5" />
+      </value>
     </option>
   </attributes>
 </scheme>

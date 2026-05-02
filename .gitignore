@@ -12,6 +12,7 @@ build/
 .intellijPlatform/
 
 # Repomix (packed context files)
+repomix.config.json
 repomix-output.xml
 
 # Output and temporary files

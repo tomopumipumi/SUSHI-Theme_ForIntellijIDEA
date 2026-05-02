@@ -1,10 +1,10 @@
-package com.tomopumipumi.sushi.statusbar
+package com.tomopumipumi.sushi.statusbar.ui
 
 import java.awt.Component
 import java.awt.Graphics
 import javax.swing.Icon
 
-public class RepeatingIcon(private val baseIcon: Icon, private val count: Int) : Icon {
+class RepeatingIcon(private val baseIcon: Icon, private val count: Int) : Icon {
 
     override fun getIconWidth(): Int = baseIcon.iconWidth * count
 

@@ -2,7 +2,7 @@
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
     <id>SUSHI-Theme</id>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
@@ -25,8 +25,12 @@
     <!-- Short summary of new features and bugfixes in the latest plugin version.
          Displayed on the Plugin Page and IDE Plugin Manager. Simple HTML elements can be included between <![CDATA[  ]]> tags. -->
     <change-notes><![CDATA[
+        <h3>Major Update</h3>
         <ul>
-            <li>Initial release of SUSHI-Theme</li>
+            <li><b>NEW Omakase Typing Effects:</b> Keystrokes now drop pieces of delicious sushi! Build your combo to trigger the blazing golden <b>FEVER MODE</b>.</li>
+            <li><b>Redesigned Progress Bar:</b> The simple progress bar has been massively upgraded into a fully animated <b>Sushi Conveyor Belt (Lane)</b>! Watch the plates flow.</li>
+            <li><b>New Settings Menu (Custom Orders):</b> Customize your sushi experience (effect types, particle speed, combo triggers, and FPS) via <i>Settings > Appearance & Behavior > SUSHI-Theme</i>.</li>
+            <li><b>Status Bar Enhancements:</b> The memory indicator now features special glowing animations during Fever Time.</li>
         </ul>
     ]]></change-notes>
 
@@ -34,12 +38,14 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
+    <resource-bundle>messages.SushiBundle</resource-bundle>
+
     <extensions defaultExtensionNs="com.intellij">
         <themeProvider
                 id="5f40e3ce-d0ea-4e91-9486-802da665a558"
                 path="/theme/SUSHITheme.theme.json"/>
-        <statusBarWidgetFactory implementation="com.tomopumipumi.sushi.statusbar.SushiWidgetFactory"
-                                id="SushiPlateWidget"/>
+        <statusBarWidgetFactory implementation="com.tomopumipumi.sushi.statusbar.widget.SushiWidgetFactory"
+                                id="sushi"/>
         <postStartupActivity implementation="com.tomopumipumi.sushi.SushiStartupActivity"/>
         <applicationService serviceImplementation="com.tomopumipumi.sushi.SushiSettings"/>
         <applicationConfigurable

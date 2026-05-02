@@ -10,7 +10,7 @@
     "compress": false,
     "fileSummary": true,
     "directoryStructure": true,
-    "files": true,
+    "files": false,
     "removeComments": false,
     "removeEmptyLines": false,
     "topFilesLength": 5,
@@ -26,7 +26,7 @@
       "includeLogsCount": 50
     }
   },
-  "include": [],
+  "include": ["src/main/kotlin/com/tomopumipumi/sushi"],
   "ignore": {
     "useGitignore": true,
     "useDefaultPatterns": true,

@@ -1,4 +1,4 @@
-package com.tomopumipumi.sushi.statusbar
+package com.tomopumipumi.sushi.statusbar.widget
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.NlsContexts
@@ -21,7 +21,7 @@ class SushiWidgetFactory : StatusBarWidgetFactory {
     override fun createWidget(
         project: Project
     ): StatusBarWidget {
-        return SushiWidget()
+        return SushiWidget(project)
     }
 
     override fun disposeWidget(widget: StatusBarWidget) {
