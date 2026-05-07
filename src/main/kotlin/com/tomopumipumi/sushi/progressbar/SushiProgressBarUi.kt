@@ -13,6 +13,8 @@ import com.tomopumipumi.sushi.progressbar.renderer.SushiRenderer
 import java.awt.Dimension
 import java.awt.Graphics
 import java.awt.Graphics2D
+import java.awt.event.HierarchyEvent
+import java.awt.event.HierarchyListener
 import javax.swing.JComponent
 import javax.swing.Timer
 import javax.swing.plaf.basic.BasicProgressBarUI
@@ -31,11 +33,12 @@ class SushiProgressBarUi : BasicProgressBarUI() {
 
     private val drawState = SushiDrawState()
     private var customTimer: Timer? = null
+    private var hierarchyListener: HierarchyListener? = null
 
     override fun startAnimationTimer() {
         if (customTimer == null) {
             customTimer = Timer(16) {
-                progressBar?.repaint()
+                if (progressBar?.isShowing == true) progressBar?.repaint()
             }
         }
         customTimer?.start()
@@ -104,7 +107,23 @@ class SushiProgressBarUi : BasicProgressBarUI() {
         }
     }
 
+    override fun installUI(c: JComponent?) {
+        super.installUI(c)
+        hierarchyListener = HierarchyListener { e ->
+            if ((e.changeFlags and HierarchyEvent.SHOWING_CHANGED.toLong()) != 0L) {
+                if (progressBar?.isShowing == true) {
+                    startAnimationTimer()
+                } else {
+                    stopAnimationTimer()
+                }
+            }
+        }
+        progressBar?.addHierarchyListener(hierarchyListener)
+    }
+
     override fun uninstallUI(c: JComponent?) {
+        hierarchyListener?.let { progressBar?.removeHierarchyListener(it) }
+        hierarchyListener = null
         stopAnimationTimer()
         customTimer = null
         super.uninstallUI(c)

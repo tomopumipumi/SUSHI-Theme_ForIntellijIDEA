@@ -7,6 +7,7 @@ import java.awt.Graphics
 import java.awt.Graphics2D
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
+import java.awt.event.ComponentListener
 import javax.swing.JComponent
 
 class EffectLayer(
@@ -46,15 +47,16 @@ class EffectLayer(
             layer.bounds = java.awt.Rectangle(0, 0, contentComponent.width, contentComponent.height)
             contentComponent.add(layer)
 
-            contentComponent.addComponentListener(object : ComponentAdapter() {
+            val listener = object : ComponentAdapter() {
                 override fun componentResized(e: ComponentEvent) {
                     layer.bounds = java.awt.Rectangle(0, 0, contentComponent.width, contentComponent.height)
                 }
-            })
+            }
+            contentComponent.addComponentListener(listener)
+            layer.putClientProperty("resizeListener", listener)
 
             val action = {
-                if (layer.isShowing)
-                    layer.repaint()
+                if (layer.isShowing) layer.repaint()
             }
             layer.repaintAction = action
             world.repaintListeners.add(action)
@@ -64,6 +66,11 @@ class EffectLayer(
 
         fun uninstall(editor: Editor, layer: EffectLayer, world: World) {
             layer.repaintAction?.let { world.repaintListeners.remove(it) }
+
+            (layer.getClientProperty("resizeListener") as? ComponentListener)?.let {
+                editor.contentComponent.removeComponentListener(it)
+            }
+
             editor.contentComponent.remove(layer)
             editor.contentComponent.repaint()
         }

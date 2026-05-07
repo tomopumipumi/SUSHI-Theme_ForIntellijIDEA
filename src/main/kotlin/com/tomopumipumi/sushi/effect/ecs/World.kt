@@ -19,15 +19,18 @@ class World {
 
     private var swingTimer: Timer? = null
     private var lastTimeNano: Long = 0L
+    private var cachedBounceDistance: Float = 0f
 
     val repaintListeners = CopyOnWriteArrayList<() -> Unit>()
 
     private fun startLoop() {
         if (swingTimer?.isRunning == true) return
 
-        val fps = SushiSettings.instance.state.fps
-        val delay = 1000 / fps
+        val state = SushiSettings.instance.state
+        val fps = state.fps
+        cachedBounceDistance = state.bounceTopDistance.toFloat()
 
+        val delay = 1000 / fps
         lastTimeNano = System.nanoTime()
 
         swingTimer = Timer(delay) {
@@ -54,9 +57,7 @@ class World {
 
         if (dt > 3.0f) dt = 3.0f
 
-        val bounceDistance = SushiSettings.instance.state.bounceTopDistance.toFloat()
-
-        physicsSystem.update(registry, dt, bounceDistance)
+        physicsSystem.update(registry, dt, cachedBounceDistance)
         lifecycleSystem.update(registry, dt)
 
         notifyRepaint()
@@ -81,9 +82,11 @@ class World {
     }
 
     fun killParticlesByEditor(closedEditor: Editor) {
-        val targetIndices = registry.getEntitiesForEditor(closedEditor)
-        for (i in targetIndices)
-            registry.lifecycle.life[i] = 0f
+        while (true) {
+            val targets = registry.getEntitiesForEditor(closedEditor)
+            if (targets.isEmpty()) break
+            registry.destroyEntity(targets.first())
+        }
     }
 
     fun dispose() {

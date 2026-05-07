@@ -10,7 +10,7 @@
     "compress": false,
     "fileSummary": true,
     "directoryStructure": true,
-    "files": false,
+    "files": true,
     "removeComments": false,
     "removeEmptyLines": false,
     "topFilesLength": 5,
@@ -19,10 +19,10 @@
     "truncateBase64": true,
     "tokenCountTree": 50000,
     "git": {
-      "sortByChanges": true,
+      "sortByChanges": false,
       "sortByChangesMaxCommits": 100,
-      "includeDiffs": true,
-      "includeLogs": true,
+      "includeDiffs": false,
+      "includeLogs": false,
       "includeLogsCount": 50
     }
   },
