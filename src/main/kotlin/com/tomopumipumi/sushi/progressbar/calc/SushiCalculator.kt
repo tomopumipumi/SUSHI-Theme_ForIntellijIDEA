@@ -34,9 +34,10 @@ object SushiCalculator {
             state.sushiLogicalX = amountFull
             state.beltOffset = amountFull
         } else {
-            val loopRange = width + 160f
-            val continuousDistance = (currentTimeMs % 3600000L).toFloat() * speed
-            state.sushiLogicalX = (continuousDistance % loopRange) - 80f
+            val loopRange = width + 160.0
+            val continuousDistance = ((currentTimeMs.toDouble() * speed) % loopRange).toFloat()
+
+            state.sushiLogicalX = continuousDistance - 80f
             state.beltOffset = continuousDistance
         }
     }

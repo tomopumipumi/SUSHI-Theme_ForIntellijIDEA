@@ -9,6 +9,7 @@ import com.intellij.openapi.editor.markup.HighlighterLayer
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
 import com.intellij.openapi.editor.markup.RangeHighlighter
 import com.intellij.openapi.editor.markup.TextAttributes
+import com.intellij.openapi.project.Project
 import com.intellij.ui.JBColor
 import com.tomopumipumi.sushi.effect.ecs.World
 import com.tomopumipumi.sushi.effect.manager.ComboManager
@@ -17,7 +18,7 @@ import com.tomopumipumi.sushi.effect.ui.EffectLayer
 import java.awt.Color
 
 @Service(Service.Level.PROJECT)
-class SushiEffectController : Disposable {
+class SushiEffectController(private val project: Project) : Disposable {
     private val world = World()
     val effectManager = EffectManager(world)
 
@@ -27,6 +28,7 @@ class SushiEffectController : Disposable {
 
     private val caretListener = object : CaretListener {
         override fun caretPositionChanged(event: CaretEvent) {
+            if (event.editor.project != project) return
             if (effectManager.feverManager.isFever) {
                 updateFeverHighlight(event.editor)
             }
@@ -35,12 +37,16 @@ class SushiEffectController : Disposable {
 
     private val editorFactoryListener = object : EditorFactoryListener {
         override fun editorCreated(event: EditorFactoryEvent) {
+            if (event.editor.project != project) return
+
             val editor = event.editor
             val layer = EffectLayer.install(editor, world)
             effectLayers[editor] = layer
         }
 
         override fun editorReleased(event: EditorFactoryEvent) {
+            if (event.editor.project != project) return
+
             val editor = event.editor
             effectLayers.remove(editor)?.let { layer ->
                 EffectLayer.uninstall(editor, layer, world)
@@ -53,15 +59,30 @@ class SushiEffectController : Disposable {
 
     private val documentListener = object : DocumentListener {
         override fun documentChanged(event: DocumentEvent) {
-            if (event.newFragment.isEmpty()) return
+            if (event.document.isInBulkUpdate) return
+
+            if (event.newFragment.isEmpty() || event.newLength > 50) return
+
             val editors = EditorFactory.getInstance().getEditors(event.document)
             if (editors.isEmpty()) return
-            val editor = editors.find { it.component.isShowing } ?: editors.first()
-            val offset = event.offset + event.newLength
-            val visualPos = editor.offsetToVisualPosition(offset)
-            val point = editor.visualPositionToXY(visualPos)
-            point.translate(0, -editor.lineHeight / 2)
-            comboManager.registerKeystroke(editor, point)
+
+            val editor = editors.find { it.component.isShowing && it.project == project }
+                ?: editors.firstOrNull { it.project == project }
+            if (editor == null) return
+
+            try {
+                val offset = event.offset + event.newLength
+
+                if (offset < 0 || offset > editor.document.textLength) return
+
+                val visualPos = editor.offsetToVisualPosition(offset)
+                val point = editor.visualPositionToXY(visualPos)
+                point.translate(0, -editor.lineHeight / 2)
+                comboManager.registerKeystroke(editor, point)
+
+            } catch (e: IndexOutOfBoundsException) {
+            } catch (e: Exception) {
+            }
         }
     }
 
@@ -77,7 +98,7 @@ class SushiEffectController : Disposable {
         val multicaster = EditorFactory.getInstance().eventMulticaster
 
         effectManager.feverManager.onFeverStateChanged { isFever ->
-            val editors = EditorFactory.getInstance().allEditors
+            val editors = EditorFactory.getInstance().allEditors.filter { it.project == project }
             if (isFever) editors.forEach { updateFeverHighlight(it) }
             else editors.forEach { clearFeverHighlight(it) }
         }

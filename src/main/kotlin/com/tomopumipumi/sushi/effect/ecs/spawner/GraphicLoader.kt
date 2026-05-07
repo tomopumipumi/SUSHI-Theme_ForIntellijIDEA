@@ -18,7 +18,7 @@ data class GraphicData(
 
 
 fun getGraphicData(levels: Array<GraphicLevel>, level: Int): GraphicData {
-    val maxLevel = 5
+    val maxLevel = levels.size
     val safeLevel = min(max(level, 1), maxLevel)
 
     val targetLevel = levels[safeLevel - 1]

@@ -2,7 +2,7 @@
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
     <id>SUSHI-Theme</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
@@ -25,12 +25,12 @@
     <!-- Short summary of new features and bugfixes in the latest plugin version.
          Displayed on the Plugin Page and IDE Plugin Manager. Simple HTML elements can be included between <![CDATA[  ]]> tags. -->
     <change-notes><![CDATA[
-        <h3>Major Update</h3>
         <ul>
-            <li><b>NEW Omakase Typing Effects:</b> Keystrokes now drop pieces of delicious sushi! Build your combo to trigger the blazing golden <b>FEVER MODE</b>.</li>
-            <li><b>Redesigned Progress Bar:</b> The simple progress bar has been massively upgraded into a fully animated <b>Sushi Conveyor Belt (Lane)</b>! Watch the plates flow.</li>
-            <li><b>New Settings Menu (Custom Orders):</b> Customize your sushi experience (effect types, particle speed, combo triggers, and FPS) via <i>Settings > Appearance & Behavior > SUSHI-Theme</i>.</li>
-            <li><b>Status Bar Enhancements:</b> The memory indicator now features special glowing animations during Fever Time.</li>
+            <li><b>Fixed:</b> Resolved an issue causing high CPU usage and battery drain by stopping progress bar animations when they are not visible.</li>
+            <li><b>Fixed:</b> Fixed memory leaks that occurred when closing editor tabs or working with multiple project windows simultaneously.</li>
+            <li><b>Fixed:</b> Prevented IDE errors/crashes when performing bulk code formatting or pasting large blocks of text.</li>
+            <li><b>Fixed:</b> Corrected a visual glitch where the progress bar animation would occasionally warp or skip.</li>
+            <li><b>Optimized:</b> Improved the overall rendering performance and stability of the typing particle effects.</li>
         </ul>
     ]]></change-notes>
 
