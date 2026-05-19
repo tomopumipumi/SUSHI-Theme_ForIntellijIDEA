@@ -17,6 +17,12 @@
     <option name="VCS_ANNOTATIONS_COLOR_5" value="1D0342" />
   </colors>
   <attributes>
+    <option name="BREAKPOINT_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="808080" />
+        <option name="BACKGROUND" value="57077" />
+      </value>
+    </option>
     <option name="CONSOLE_BLACK_OUTPUT">
       <value>
         <option name="FOREGROUND" value="fdfcfc" />

@@ -14,7 +14,7 @@ java {
 }
 
 group = "com.example.theme"
-version = "1.1.1"
+version = "1.1.2"
 
 repositories {
     mavenCentral()
