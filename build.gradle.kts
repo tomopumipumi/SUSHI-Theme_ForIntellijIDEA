@@ -14,7 +14,7 @@ java {
 }
 
 group = "com.example.theme"
-version = "1.1.2"
+version = "1.1.3"
 
 repositories {
     mavenCentral()
@@ -36,7 +36,7 @@ intellijPlatform {
 
         ideaVersion {
             sinceBuild = "233"
-            untilBuild = "261.*"
+            untilBuild = "263.*"
         }
     }
 }
