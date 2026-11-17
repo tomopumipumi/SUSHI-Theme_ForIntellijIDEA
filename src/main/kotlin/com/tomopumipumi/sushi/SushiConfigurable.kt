@@ -2,7 +2,7 @@ package com.tomopumipumi.sushi
 
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.ui.ComboBox
-import com.intellij.ui.SimpleListCellRenderer
+import com.intellij.ui.dsl.listCellRenderer.textListCellRenderer
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBTextField
@@ -28,8 +28,8 @@ class SushiConfigurable : Configurable {
         EffectTypes.NONE to "effect.type.none"
     )
     private val effectTypeComboBox = ComboBox(effectItems.toTypedArray()).apply {
-        renderer = SimpleListCellRenderer.create("") { item ->
-            SushiBundle.message(item.second)
+        renderer = textListCellRenderer { item ->
+            item?.let { SushiBundle.message(it.second) } ?: ""
         }
     }
 
@@ -40,8 +40,8 @@ class SushiConfigurable : Configurable {
         120 to "fps.type.ultrasmooth"
     )
     private val fpsTypeComboBox = ComboBox(fpsItems.toTypedArray()).apply {
-        renderer = SimpleListCellRenderer.create("") { item ->
-            SushiBundle.message(item.second)
+        renderer = textListCellRenderer { item ->
+            item?.let { SushiBundle.message(it.second) } ?: ""
         }
     }
 

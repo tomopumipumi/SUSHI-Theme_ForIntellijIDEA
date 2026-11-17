@@ -5,7 +5,7 @@ import org.jetbrains.annotations.PropertyKey
 
 private const val BUNDLE = "messages.SushiBundle"
 
-object SushiBundle : DynamicBundle(BUNDLE) {
+object SushiBundle : DynamicBundle(SushiBundle::class.java, BUNDLE) {
 
     @JvmStatic
     fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String {
