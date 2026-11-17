@@ -27,6 +27,7 @@ dependencies {
     intellijPlatform {
         intellijIdeaCommunity("2023.3.6")
         instrumentationTools()
+        pluginVerifier()
     }
 }
 
@@ -37,6 +38,11 @@ intellijPlatform {
         ideaVersion {
             sinceBuild = "233"
             untilBuild = "263.*"
+        }
+    }
+    pluginVerification {
+        ides {
+            ide(org.jetbrains.intellij.platform.gradle.IntelliJPlatformType.IntellijIdeaCommunity, "2023.3.6")
         }
     }
 }
